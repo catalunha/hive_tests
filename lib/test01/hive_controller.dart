@@ -1,8 +1,9 @@
 import 'dart:io';
-import 'package:hive/hive.dart';
-import 'package:hive_tests/test01/hive_exception.dart';
 import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
+import 'package:hive/hive.dart';
+// import 'package:hive_flutter/hive_flutter.dart';
+import 'package:hive_tests/test01/hive_exception.dart';
 
 class HiveController {
   String _nameListOfBoxes = 'hiveboxes';
@@ -42,10 +43,17 @@ class HiveController {
     await _getNameOfBoxes();
   }
 
-  initInFlutter() {
-    print('coming soon...');
-    exit(0);
-  }
+  /// Uncomment and import package
+  // Future<void> initInFlutter({String? folder}) async {
+  //   _folder = folder ?? _folder;
+  //   _nameListOfBoxes = folder ?? _folder;
+  //   try {
+  //     await Hive.initFlutter(_folder);
+  //   } catch (e) {
+  //     throw HiveICantInitException();
+  //   }
+  //   await _getNameOfBoxes();
+  // }
 
   Future<void> _getNameOfBoxes() async {
     var boxOpen = await Hive.openBox(_nameListOfBoxes);
