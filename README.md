@@ -1,2 +1,2 @@
-A sample command-line application with an entrypoint in `bin/`, library code
-in `lib/`, and example unit test in `test/`.
+Pequeno projeto para empactor todas as ações e gerenciamento do hive numa unica classe.
+
