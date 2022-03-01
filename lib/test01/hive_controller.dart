@@ -43,7 +43,7 @@ class HiveController {
     await _getNameOfBoxes();
   }
 
-  /// Uncomment and import package
+  // /// Uncomment and import package
   // Future<void> initInFlutter({String? folder}) async {
   //   _folder = folder ?? _folder;
   //   _nameListOfBoxes = folder ?? _folder;
