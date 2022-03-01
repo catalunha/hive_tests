@@ -15,9 +15,7 @@ class HiveICantInitException implements Exception {
   final String message;
   final int? code;
 
-  HiveICantInitException({this.message = '', this.code}) {
-    toString();
-  }
+  HiveICantInitException({this.message = '', this.code});
 
   @override
   String toString() => 'HiveICantInitException(message: $message, code: $code)';
