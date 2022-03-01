@@ -38,6 +38,10 @@ void execute() async {
     for (var item in collections) {
       print(item);
     }
+    List<String> boxes = await hiveController.listOfBoxes();
+    for (var item in boxes) {
+      print(item);
+    }
   } catch (e) {
     print(e);
   }

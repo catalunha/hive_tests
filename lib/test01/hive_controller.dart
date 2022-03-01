@@ -9,6 +9,11 @@ class HiveController {
   final String folder;
   var _boxes = <String>{};
   Box? _box;
+
+  /// The box with the name of all the boxes is 'hiveboxes'
+  /// Please dont create any box with this name
+  ///
+  /// First method start is initInDart()
   HiveController({required this.folder});
 
   Future<void> initInDart() async {
@@ -227,5 +232,31 @@ class HiveController {
     } catch (e) {
       throw HiveICantDeleteBoxException(message: 'In deleteAll.');
     }
+  }
+
+  Future<List<String>> listOfBoxes() async {
+    Box box;
+    try {
+      box = await Hive.openBox(_nameListOfBoxes);
+    } catch (e) {
+      throw HiveICantOpenTheBoxException();
+    }
+    var list = <String>[];
+    dynamic doc;
+    if (box.isNotEmpty) {
+      try {
+        doc = box.get(_nameListOfBoxes);
+      } catch (e) {
+        throw HiveICantGetValueException(message: 'In listOfBoxes.');
+      }
+      if (doc != null) {
+        try {
+          list = doc.cast<String>();
+        } catch (e) {
+          throw HiveICantCastDataException(message: 'In listOfBoxes.');
+        }
+      }
+    }
+    return list;
   }
 }
