@@ -7,6 +7,8 @@ import 'package:uuid/uuid.dart';
 class HiveController {
   final String _nameListOfBoxes = 'hiveboxes';
   final String _folder;
+  String get folder => _folder;
+
   var _boxes = <String>{};
   Box? _box;
 
