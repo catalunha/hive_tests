@@ -1,9 +1,9 @@
 import 'package:hive_tests/test01/hive_controller.dart';
 
 void execute() async {
-  var hiveController = HiveController(folder: 'hive_test01_hivedb');
+  var hiveController = HiveController();
   try {
-    await hiveController.initInDart();
+    await hiveController.initInDart(folder: 'hive_test01_hivedb');
     await hiveController.deleteAll('teste1');
     await hiveController.addBox('teste1');
     await hiveController.create(

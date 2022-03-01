@@ -5,11 +5,12 @@ import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 
 class HiveController {
-  final String _nameListOfBoxes = 'hiveboxes';
-  final String _folder;
+  String _nameListOfBoxes = 'hiveboxes';
+  String _folder = 'hiveboxes';
   String get folderAllBoxes => _folder;
   String get boxAndKeyWithListAllBoxes => _nameListOfBoxes;
 
+  // ignore: prefer_final_fields
   var _boxes = <String>{};
   Box? _box;
 
@@ -17,9 +18,15 @@ class HiveController {
   /// Please dont create any box with this name
   ///
   /// First method start is initInDart()
-  HiveController({required String folder}) : _folder = folder;
-
-  Future<void> initInDart() async {
+  static HiveController? _instance;
+  HiveController._();
+  factory HiveController() {
+    _instance ??= HiveController._();
+    return _instance!;
+  }
+  Future<void> initInDart({String? folder}) async {
+    _folder = folder ?? _folder;
+    _nameListOfBoxes = folder ?? _folder;
     var pathFinal = '';
     try {
       var appPath = Directory.current.path;
@@ -69,7 +76,8 @@ class HiveController {
     }
   }
 
-  Future<void> close() async {
+  Future<void> close(String boxName) async {
+    await _getBox(boxName);
     try {
       await _box!.close();
     } catch (e) {
@@ -115,6 +123,7 @@ class HiveController {
     }
   }
 
+  /// Return uuid create
   Future<String> create({
     required String boxName,
     required Map<String, dynamic> data,
