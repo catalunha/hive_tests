@@ -6,7 +6,7 @@ import 'package:uuid/uuid.dart';
 
 class HiveController {
   final String _nameListOfBoxes = 'hiveboxes';
-  final String folder;
+  final String _folder;
   var _boxes = <String>{};
   Box? _box;
 
@@ -14,13 +14,13 @@ class HiveController {
   /// Please dont create any box with this name
   ///
   /// First method start is initInDart()
-  HiveController({required this.folder});
+  HiveController({required String folder}) : _folder = folder;
 
   Future<void> initInDart() async {
     var pathFinal = '';
     try {
       var appPath = Directory.current.path;
-      pathFinal = p.join(appPath, folder);
+      pathFinal = p.join(appPath, _folder);
     } catch (e) {
       throw HiveICantOpenDirectoryException();
     }
