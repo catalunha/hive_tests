@@ -32,7 +32,6 @@ class HiveController {
     try {
       var appPath = Directory.current.path;
       pathFinal = p.join(appPath, _folder);
-      throw Exception();
     } catch (e) {
       throw HiveICantOpenDirectoryException(message: 'a');
     }
