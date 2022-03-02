@@ -1,4 +1,5 @@
 import 'package:hive_tests/test01/hive_controller.dart';
+import 'package:hive_tests/test01/hive_exception.dart';
 
 void execute() async {
   var hiveController = HiveController();
@@ -42,6 +43,8 @@ void execute() async {
     // for (var item in boxes) {
     //   print(item);
     // }
+  } on HiveException catch (e) {
+    print(e.message);
   } catch (e) {
     print(e);
   }
