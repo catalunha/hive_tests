@@ -3,7 +3,7 @@ import 'package:path/path.dart' as p;
 import 'package:uuid/uuid.dart';
 import 'package:hive/hive.dart';
 // import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive_tests/test01/hive_exception.dart';
+import 'package:hive_tests/hivedatabase/hive_exception.dart';
 
 class HiveController {
   String _nameListOfBoxes = 'hiveboxes';

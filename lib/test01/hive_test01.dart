@@ -1,10 +1,10 @@
-import 'package:hive_tests/test01/hive_controller.dart';
-import 'package:hive_tests/test01/hive_exception.dart';
+import 'package:hive_tests/hivedatabase/hive_controller.dart';
+import 'package:hive_tests/hivedatabase/hive_exception.dart';
 
 void execute() async {
   var hiveController = HiveController();
   try {
-    await hiveController.initInDart(folder: 'hive_test01_hivedb');
+    await hiveController.initInDart(folder: 'hiveDatabaseboxes');
     // await hiveController.deleteAll('teste1');
     // await hiveController.addBox('teste1');
     // await hiveController.create(
